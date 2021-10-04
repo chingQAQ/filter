@@ -6,6 +6,7 @@ import autoprefixer from 'autoprefixer'
 
 export default ({ mode }) => {
   return defineConfig({
+    base: './',
     css: {
       postcss: {
         plugins: [
