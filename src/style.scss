@@ -1,0 +1,88 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+h1 {
+  color: red;
+}
+
+.grainy-gradients {
+  position: relative;
+  width: 500px;
+  margin: 50px auto;
+
+  &_mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.4)
+      ),
+      url(./filter.svg),
+      100%;
+    // filter: contrast(200%);
+    mix-blend-mode: screen;
+    animation: grainyMove 5s linear infinite both;
+  }
+
+  > img {
+    width: 100%;
+  }
+}
+
+.blob {
+  width: 100px;
+  height: 100px;
+  margin: 50px auto;
+
+  &_item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(-0.1turn, rgb(255, 1, 1), rgba(255, 1, 107, 0.2));
+    filter: url(./filter.svg#blob);
+    animation: bubble-size 4s ease-in infinite, bubble-move 4s ease-in infinite;
+  }
+}
+
+
+@keyframes grainyMove {
+  from {
+    background-position-x: 0px;
+    background-position-y: 0px;
+  }
+
+  to {
+    background-position-x: 100%;
+    background-position-y: 100px;
+  }
+}
+
+@keyframes bubble-size {
+    0% {
+        width: 100%;
+        height: 100%;
+    }
+    100% {
+        width: 0;
+        height: 0;
+    }
+}
+@keyframes bubble-move {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: 100%;
+    }
+}
